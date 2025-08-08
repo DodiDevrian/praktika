@@ -46,6 +46,17 @@ class M_diskusi extends CI_Model
 
     }
 
+    public function list_report()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_report');
+        $this->db->join('tbl_user', 'tbl_user.id_user = tbl_report.id_user_report', 'left');
+        $this->db->join('tbl_ans', 'tbl_ans.id_ans = tbl_report.id_ans', 'left');
+        $this->db->order_by('id_report', 'DESC');
+
+        return $this->db->get()->result();
+    }
+
     public function listsById($id_kursus, $limit, $start)
     {
         // $this->db->join('tbl_asprak', 'tbl_asprak.id_asprak = tbl_diskusi.id_asprak', 'left');

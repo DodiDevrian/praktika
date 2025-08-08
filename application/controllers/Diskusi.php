@@ -220,6 +220,7 @@ class Diskusi extends CI_Controller
             'diskusi'       => $this->m_diskusi->list(),
             'jawab'         => $this->m_diskusi->list_jawab(),
             'like'          => $this->m_diskusi->list_like(),
+            'report'          => $this->m_diskusi->list_report(),
             'id'            => $id_ask,
             'isi'           => 'diskusi/v_jawab'
         );
