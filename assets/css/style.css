@@ -241,6 +241,12 @@ a.link-profile {
     color: #2599d7;
 }
 
+.disabled-link {
+    pointer-events: none;
+    cursor: default; /* Optional: Changes cursor to indicate non-interactivity */
+    opacity: 0.6; /* Optional: Visually dims the link */
+}
+
 @media (max-width: 600px) {
     .img-ask {
         display: none;

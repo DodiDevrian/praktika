@@ -326,4 +326,19 @@ class Diskusi extends CI_Controller
         $referred_from = $this->session->userdata('chat_diskusi');
         redirect($referred_from, 'refresh');
     }
+
+    public function delete_jawab($id_ans)
+    {
+        $kursus = $this->m_diskusi->detail_ans($id_ans);
+        if ($kursus->foto_jawab != "") {
+            unlink('./upload/foto_jawab/' . $kursus->foto_jawab);
+        }
+
+        $data = array('id_ans' => $id_ans);
+        $this->m_diskusi->delete_jawab($data);
+        $this->session->set_flashdata('pesan', 'Jawaban Berhasil Dihapus!');
+
+        $referred_from = $this->session->userdata('chat_diskusi');
+        redirect($referred_from, 'refresh');
+    }
 }

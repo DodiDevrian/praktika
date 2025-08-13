@@ -92,6 +92,15 @@ class M_diskusi extends CI_Model
         return $this->db->get()->row();
     }
 
+    public function detail_ans($id_ans)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_ans');
+        $this->db->where('id_ans', $id_ans);
+
+        return $this->db->get()->row();
+    }
+
     public function like_jawab($data)
     {
         $this->db->insert('tbl_like', $data);
@@ -118,5 +127,11 @@ class M_diskusi extends CI_Model
     {
         $this->db->where('id_diskusi', $data['id_diskusi']);
         $this->db->delete('tbl_diskusi', $data);
+    }
+
+    public function delete_jawab($data)
+    {
+        $this->db->where('id_ans', $data['id_ans']);
+        $this->db->delete('tbl_ans', $data);
     }
 }

@@ -68,6 +68,23 @@ foreach ($nilai as $key => $value) {
 }
 ?>
 
+<?php
+	$result = $this->db
+		->where('id_kursus', $id_list)
+		->get('tbl_materi')
+		->result();
+
+	$lastIndex = count($result) - 1;
+
+	foreach ($result as $index => $row) {
+		if ($index === $lastIndex) {
+			$last_id_materi = $row->id_materi;
+		}
+
+		echo "<br>";
+	}
+?>
+
 	<div class="container">
 		<div class="wrapper">
 			<aside id="sidebar">
@@ -166,7 +183,7 @@ foreach ($nilai as $key => $value) {
 								</div>
 							<?php } ?>
 						</div>
-						<?php if ($materi->cek_last == 'Yes') { ?>
+						<?php if ($materi->cek_last == "Yes" ) { ?>
 							<?php if ($counts == 0) { ?>
 								<div class="posttest text-center">
 									<p>Anda belum melakukan post test!</p>

@@ -92,11 +92,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('asisten/dashboard')?>" class="dropdown-toggle no-arrow <?php echo menuAktif('dashboard') ?>">
-                        <span class="micon dw dw-analytics-19"></span><span class="mtext">Dashboard</span>
-                    </a>
-                </li>
-                <li>
                     <a href="<?= base_url('asisten/diskusi')?>" class="dropdown-toggle no-arrow <?php echo menuAktif('diskusi') ?>">
                         <span class="micon dw dw-chat-11"></span><span class="mtext">Diskusi</span>
                     </a>
