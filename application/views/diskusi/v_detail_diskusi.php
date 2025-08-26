@@ -64,6 +64,15 @@
             <?php } ?>
         </div>
     </div>
+
+    <?php
+        if ($this->session->flashdata('pesan')) {
+            echo '<div class="alert alert-success alert-dismissible m-3">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+            echo $this->session->flashdata('pesan');
+            echo '</div>';
+        }
+    ?>
     
     <?php foreach ($diskusi as $key => $value) { ?>
     <?php 

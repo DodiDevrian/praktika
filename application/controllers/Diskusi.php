@@ -383,4 +383,20 @@ class Diskusi extends CI_Controller
         $this->load->view('diskusi/v_search', $data);
         $this->load->view('layout/v_footer');
     }
+
+    public function delete($id_ask)
+    {
+        $diskusi = $this->m_diskusi->detail_ask($id_ask);
+        if ($diskusi->foto_tanya != "") {
+            unlink('./upload/foto_tanya/' . $diskusi->foto_tanya);
+        }
+
+        $data = array('id_ask' => $id_ask);
+        $this->m_diskusi->delete($data);
+
+        $this->session->set_flashdata('pesan_delete', 'Data Berhasil Dihapus!');
+
+        $referred_from = $this->session->userdata('chat_diskusi');
+        redirect($referred_from, 'refresh');
+    }
 }

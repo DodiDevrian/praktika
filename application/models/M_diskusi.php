@@ -125,8 +125,8 @@ class M_diskusi extends CI_Model
 
     public function delete($data)
     {
-        $this->db->where('id_diskusi', $data['id_diskusi']);
-        $this->db->delete('tbl_diskusi', $data);
+        $this->db->where('id_ask', $data['id_ask']);
+        $this->db->delete('tbl_ask', $data);
     }
 
     public function delete_jawab($data)

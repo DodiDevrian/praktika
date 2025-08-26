@@ -49,6 +49,21 @@
             <?php } ?>
         </div>
     </div>
+
+    <?php
+        if ($this->session->flashdata('pesan')) {
+            echo '<div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+            echo $this->session->flashdata('pesan');
+            echo '</div>';
+        }
+        if ($this->session->flashdata('pesan_delete')) {
+            echo '<div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+            echo $this->session->flashdata('pesan_delete');
+            echo '</div>';
+        }
+    ?>
     
     <?php foreach ($diskusi as $key => $value) { ?>
     <?php 
@@ -68,7 +83,6 @@
                 <div class="card-body card-ask">
                     <div class="tanya-area">
                         <a href="" class="" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bars" style="color: #ed9532; font: 20px;" aria-hidden="true"></i>
                         </a>
                         <a href="<?= base_url('diskusi/jawab/' . $value->id_ask) ?>">
                             <h5 class="ml-2" style="color: #0062d4;"><?= $value->tanya ?></h5>
@@ -76,6 +90,15 @@
                     </div>
                 </div>
                 <div class="footer-ask" style="padding: 1.25rem 1.25rem 1.25rem 1.25rem; ">
+                    <li class="ml-2 dropdown" style="width: 22px; border: solid 1px; border-radius: 25px; text-align: center;">
+                        <a href="" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="<?= base_url('diskusi/delete/' . $value->id_ask ) ?>">Delete</a>
+                        </div>
+                    </li>
                     <li class="ml-2"><i class="fa fa-user" aria-hidden="true"></i> <?= $value->nama_user?></li>
                     <li class="ml-2" style="color: #2389ff;"><i class="fa fa-book" aria-hidden="true"></i><a href="<?= base_url('diskusi/detail_diskusi_me/' . $value->id_kursus)?>"> <?= $value->nama_kursus?></a></li>
                     <li class="ml-2"><i class="fa fa-calendar" aria-hidden="true"></i> <?= date('d-m-Y', strtotime($value->created_ask)) ?></li>
