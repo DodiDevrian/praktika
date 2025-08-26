@@ -145,6 +145,20 @@ class Diskusi extends CI_Controller
         }
     }
 
+    public function delete($id_ask)
+    {
+        $diskusi = $this->m_diskusi->detail_ask($id_ask);
+        if ($diskusi->foto_tanya != "") {
+            unlink('./upload/foto_tanya/' . $diskusi->foto_tanya);
+        }
+
+        $data = array('id_ask' => $id_ask);
+        $this->m_diskusi->delete($data);
+
+        $this->session->set_flashdata('pesan', 'Data Berhasil Dihapus!');
+        redirect('asisten/diskusi');
+    }
+
     public function delete_jawab($id_ans)
     {
         $kursus = $this->m_diskusi->detail_ans($id_ans);

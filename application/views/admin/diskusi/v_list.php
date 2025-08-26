@@ -34,10 +34,11 @@
                     <table class="data-table table stripe hover nowrap">
                         <thead>
                             <tr>
+                                <th>No</th>    
                                 <th>Nama Pengirim</th>
-                                <th>Praktikum</th>    
-                                <th>Diskusi</th>
-                                <th>Jawaban</th>
+                                <th>Pertanyaan</th>
+                                <th>Gambar</th>
+                                <th>Praktikum</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
@@ -45,24 +46,19 @@
                             <!-- Mulai Foreach -->
                             <?php $no=1; foreach ($diskusi as $key => $value) { ?>
                             <tr>
+                                <td><?= $no++?></td>
                                 <td><?= $value->nama_user?></td>
+                                <td><?= wordwrap($value->tanya,45,"<br>\n");?><br></td>
+                                <td><img src="<?= base_url('upload/foto_tanya/' . $value->foto_tanya) ?>" alt="" width="200px"></td>
                                 <td><?= $value->nama_kursus?></td>
-                                <td>
-                                    <?= wordwrap($value->diskusi_user,45,"<br>\n");?><br>
-                                    <img src="<?= base_url('upload/foto_diskusi/' . $value->foto_diskusi) ?>" alt="" width="200px">
-                                </td>
-                                <td>
-                                    <?= wordwrap($value->diskusi_asprak,45,"<br>\n");?><br>
-                                    <img src="<?= base_url('upload/foto_diskusi_asprak/' . $value->foto_diskusi_asprak) ?>" alt="" width="200px">
-                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <!-- <a class="dropdown-item" href="<?= base_url('admin/diskusi/edit/' . $value->id_diskusi) ?>"><i class="dw dw-edit2"></i> Edit</a> -->
-                                            <a class="dropdown-item" href="<?= base_url('admin/diskusi/delete/' . $value->id_diskusi) ?>"><i class="dw dw-delete-3"></i> Delete</a>
+                                            <a class="dropdown-item" href="<?= base_url('admin/diskusi/jawab/' . $value->id_ask) ?>"><i class="dw dw-chat-11"></i> Lihat Jawaban</a>
+                                            <a class="dropdown-item" href="<?= base_url('admin/diskusi/delete/' . $value->id_ask) ?>"><i class="dw dw-delete-3"></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -75,3 +71,26 @@
             </div>
 
         </div>
+
+<?php foreach ($diskusi as $key => $value) { ?>
+    <!-- Modal delete -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
