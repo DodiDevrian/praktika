@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="title">
-                            <h4>Hasil Pre-test <?= $detail_kursus->nama_kursus ?></li></h4>
+                            <h4>Hasil Pre-test <?= $detail_materi->nama_materi ?></li></h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -35,7 +35,7 @@
                 <div class="but-drop d-flex">
                     <div class="dropdown pd-20">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                            <?= $detail_kursus->nama_kursus ?>
+                            <?= $detail_materi->nama_kursus ?>
                         </button>
                         <div class="dropdown-menu">
                             <?php foreach ($kursus as $key => $value) { ?>
@@ -47,11 +47,11 @@
                     </div>
                     <div class="dropdown pd-20">
                         <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                            Pilih Materi
+                            <?= $detail_materi->nama_materi ?>
                         </button>
                         <div class="dropdown-menu">
                             <?php foreach ($materi as $key => $value) { ?>
-                                <?php if ($value->id_kursus == $id) { ?>
+                                <?php if ($value->id_kursus == $detail_materi->id_kursus) { ?>
                                     <a class="dropdown-item" href="<?= base_url('dosen/pretest/hasil_pretest/' . $value->id_materi) ?>"><?= $value->nama_materi ?></a>
                                 <?php } ?>
                             <?php } ?>
@@ -74,7 +74,7 @@
                             <?php $no = 1 ;
                             $list_pretest   = $this->m_pretest->do_pretest();
                             foreach ($list_pretest as $key => $value) { ?>
-                            <?php if ($value->id_kursus == $id) { ?>
+                            <?php if ($value->id_materi == $detail_materi->id_materi) { ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $value->nama_user?></td>

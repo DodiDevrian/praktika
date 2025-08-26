@@ -55,19 +55,19 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<nav class="menu_nav">
+		<nav class="menu_nav" style="width: 80%;">
 			<ul class="menu_mm">
-				<li class="<?php echo menuAktif('home') ?> menu_mm"><a href="<?= base_url('home') ?>">Home</a></li>
-				<li class="<?php echo menuAktif('kursus') ?> menu_mm"><a href="<?= base_url('kursus') ?>">Praktikum</a></li>
-				<li class="<?php echo menuAktif('asprak') ?> menu_mm"><a href="<?= base_url('asprak') ?>">Asprak</a></li>
-				<li class="<?php echo menuAktif('diskusi') ?> menu_mm"><a href="<?= base_url('diskusi') ?>">Forum Diskusi</a></li>
-				<li class="<?php echo menuAktif('about') ?> menu_mm mb-5"><a href="<?= base_url('about') ?>">About</a></li>
+				<li class="<?php echo menuAktif('home') ?> menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('home') ?>">Home</a></li>
+				<li class="<?php echo menuAktif('kursus') ?> menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('kursus') ?>">Praktikum</a></li>
+				<li class="<?php echo menuAktif('asprak') ?> menu_mm"style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('asprak') ?>">Asprak</a></li>
+				<li class="<?php echo menuAktif('diskusi') ?> menu_mm"style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('diskusi') ?>">Forum Diskusi</a></li>
+				<li class="<?php echo menuAktif('about') ?> menu_mm mb-5"style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('about') ?>">About</a></li>
 				<?php if($this->session->userdata('id_user')) { ?>
-					<li class="<?php echo menuAktif('about') ?> menu_mm"><a href="<?= base_url('profile/mahasiswa/' . $this->session->userdata('slug_user')) ?>">Profil</a></li>
-					<li class="menu_mm"><a href="" type="button" data-toggle="modal" data-target="#logout">Logout</a></li>
+					<li class="<?php echo menuAktif('about') ?> menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('profile/mahasiswa/' . $this->session->userdata('slug_user')) ?>">Profil</a></li>
+					<li class="menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="" type="button" data-toggle="modal" data-target="#logout">Logout</a></li>
 				<?php }else { ?>
-					<li class="menu_mm"><a href="<?= base_url('auth/login') ?>">Login</a></li>
-					<li class="menu_mm"><a href="<?= base_url('auth/register') ?>">Register</a></li>
+					<li class="menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('auth/login') ?>">Login</a></li>
+					<li class="menu_mm" style="border-bottom: solid 1px; margin-bottom: 15px;"><a href="<?= base_url('auth/register') ?>">Register</a></li>
 				<?php } ?>
 			</ul>
 		</nav>

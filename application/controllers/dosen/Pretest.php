@@ -34,10 +34,11 @@ class Pretest extends CI_Controller
             'dosen'        => $this->m_dosen->lists(),
             'count_new'     => $this->m_praktikan->lists(),
             'pretest'   => $this->m_pretest->lists(),
+            'kursus'   => $this->m_kursus->lists(),
             'materi'   => $this->m_materi->lists(),
-            'isi'     => 'admin/pretest/v_list'
+            'isi'     => 'dosen/pretest/v_list'
         );
-        $this->load->view('admin/layout/v_wrapper', $data, FALSE);
+        $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
     }
 
     public function soal($id_materi)
@@ -58,15 +59,34 @@ class Pretest extends CI_Controller
         $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
     }
 
-    public function hasil()
+    public function hasil($id_kursus)
     {
         $data = array(
-            'title' => 'Admin',
+            'title' => 'Hasil Pre-test',
             'title2' => 'Dashboard',
             'count_new'     => $this->m_praktikan->lists(),
+            'kursus'   => $this->m_kursus->lists(),
             'dosen'        => $this->m_dosen->lists(),
-            'id'            => $this->uri->segment(5),
+            'detail_kursus' => $this->m_kursus->detail_kursus($id_kursus),
+            'materi'        => $this->m_materi->lists(),
+            'id'            => $id_kursus,
             'isi'   => 'dosen/pretest/v_hasil'
+        );
+        $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
+    }
+
+    public function hasil_pretest($id_materi)
+    {
+        $data = array(
+            'title' => 'Hasil Pre-test',
+            'title2' => 'Dashboard',
+            'count_new'     => $this->m_praktikan->lists(),
+            'kursus'   => $this->m_kursus->lists(),
+            'dosen'        => $this->m_dosen->lists(),
+            'materi'        => $this->m_materi->lists(),
+            'detail_materi' => $this->m_materi->detail($id_materi),
+            'id'            => $id_materi,
+            'isi'   => 'dosen/pretest/v_hasil_pretest'
         );
         $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
     }

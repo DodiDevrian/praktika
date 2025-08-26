@@ -33,10 +33,11 @@ class Posttest extends CI_Controller
             'title2'  => 'Laboratorium Teknik Informatika',
             'dosen'        => $this->m_dosen->lists(),
             'kursus'   => $this->m_kursus->lists(),
+            'posttest'   => $this->m_posttest->lists(),
             'count_new'     => $this->m_praktikan->lists(),
-            'isi'     => 'admin/posttest/v_list'
+            'isi'     => 'dosen/posttest/v_list'
         );
-        $this->load->view('admin/layout/v_wrapper', $data, FALSE);
+        $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
     }
 
     public function soal($id_kursus){
@@ -57,15 +58,17 @@ class Posttest extends CI_Controller
         $this->load->view('dosen/layout/v_wrapper', $data, FALSE);
     }
 
-    public function hasil()
+    public function hasil($id_kursus)
     {
         $data = array(
-            'title' => 'Admin',
-            'title2' => 'Dashboard',
+            'title' => 'Hasil Posttest',
+            'title2' => 'Laboratorium Teknik Informatika',
             'count_new'     => $this->m_praktikan->lists(),
             'dosen'        => $this->m_dosen->lists(),
+            'kursus'   => $this->m_kursus->lists(),
+            'detail_kursus' => $this->m_kursus->detail_kursus($id_kursus),
             'posttest'     => $this->m_posttest->do_posttest(),
-            'id'            => $this->uri->segment(4),
+            'id'            => $id_kursus,
             'isi'   => 'dosen/posttest/v_hasil'
         );
         $this->load->view('dosen/layout/v_wrapper', $data, FALSE);

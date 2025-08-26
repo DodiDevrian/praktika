@@ -33,6 +33,18 @@
                     <a class="mr-3" href="<?= base_url('dosen/dashboard/profile/' . $this->session->userdata('id_admin')) ?>"><i class="icon-copy dw dw-left-arrow2"></i></a>
                     <h4 class="text-blue h4">Data Nilai Post Test</h4>
                 </div>
+                <div class="dropdown pd-20">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <?= $detail_kursus->nama_kursus ?>
+                        </button>
+                        <div class="dropdown-menu">
+                            <?php foreach ($kursus as $key => $value) { ?>
+                                <?php if ($value->id_admin == $this->session->userdata('id_admin')) { ?>
+                                    <a class="dropdown-item" href="<?= base_url('dosen/posttest/hasil/' . $value->id_kursus) ?>"><?= $value->nama_kursus ?></a>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                    </div>
                 <div class="pb-20">
                     <table class="table hover multiple-select-row data-table-export nowrap">
                         <thead>

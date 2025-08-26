@@ -86,11 +86,21 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <!-- <li>
-                    <a href="<?= base_url('dosen/dashboard')?>" class="dropdown-toggle no-arrow <?php echo menuAktif('dashboard') ?>">
-                        <span class="micon dw dw-analytics-19"></span><span class="mtext">Dashboard</span>
+                <li>
+                    <a href="<?= base_url('dosen/dashboard/profile/' . $this->session->userdata('id_admin'))?>" class="dropdown-toggle no-arrow <?php echo menuAktif('dashboard') ?>">
+                        <span class="micon dw dw-user-12"></span><span class="mtext">Profile</span>
                     </a>
-                </li> -->
+                </li>
+                <li>
+                    <a href="<?= base_url('dosen/pretest')?>" class="dropdown-toggle no-arrow <?php echo menuAktif('pretest') ?>">
+                        <span class="micon dw dw-monitor-1"></span><span class="mtext">Nilai Pre-test</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('dosen/posttest')?>" class="dropdown-toggle no-arrow <?php echo menuAktif('posttest') ?>">
+                        <span class="micon dw dw-monitor"></span><span class="mtext">Nilai Post-test</span>
+                    </a>
+                </li>
                 <!-- <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-book1"></span><span class="mtext">Menu</span>

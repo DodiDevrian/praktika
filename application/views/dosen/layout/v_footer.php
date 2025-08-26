@@ -1,5 +1,5 @@
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				Dodi Devrian - Teknik Informatika
+				Teknik Informatika - Institut Teknologi Sumatera
 			</div>
 		</div>
 	</div>
