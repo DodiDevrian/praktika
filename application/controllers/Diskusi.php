@@ -17,6 +17,8 @@ class Diskusi extends CI_Controller
 
     public function index()
     {
+        $keyword = $this->input->get('keyword');
+        
         $config['base_url'] = site_url('diskusi/index'); //site url
         $config['total_rows'] = $this->db->count_all('tbl_ask'); //total row
         $config['per_page'] = 10;
@@ -327,6 +329,30 @@ class Diskusi extends CI_Controller
         redirect($referred_from, 'refresh');
     }
 
+    public function report_delete ($id_ans)
+    {
+        $data = array(
+            'id_ans'        => $id_ans,
+            'report'        => $this->input->post('report'),
+            'id_user_report'  => $this->session->userdata('id_user')
+        );
+
+        $this->m_diskusi->report($data);
+
+        $kursus = $this->m_diskusi->detail_ans($id_ans);
+        if ($kursus->foto_jawab != "") {
+            unlink('./upload/foto_jawab/' . $kursus->foto_jawab);
+        }
+
+        $data_delete = array('id_ans' => $id_ans);
+        $this->m_diskusi->delete_jawab($data_delete);
+
+        $this->session->set_flashdata('pesan', 'Berhasil Melakukan Report!');
+
+        $referred_from = $this->session->userdata('chat_diskusi');
+        redirect($referred_from, 'refresh');
+    }
+
     public function delete_jawab($id_ans)
     {
         $kursus = $this->m_diskusi->detail_ans($id_ans);
@@ -340,5 +366,21 @@ class Diskusi extends CI_Controller
 
         $referred_from = $this->session->userdata('chat_diskusi');
         redirect($referred_from, 'refresh');
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['kursus'] = $this->m_kursus->lists();
+		$data['diskusi'] = $this->m_diskusi->get_keyword($keyword);
+		$data['keyword'] = $keyword;
+        $data['title'] = 'Forum Diskusi';
+        $data['title2'] = 'Laboratorium Teknik Informatika';
+
+        $this->load->view('layout/v_head', $data);
+        $this->load->view('layout/v_header');
+        $this->load->view('layout/v_nav');
+        $this->load->view('diskusi/v_search', $data);
+        $this->load->view('layout/v_footer');
     }
 }

@@ -134,4 +134,15 @@ class M_diskusi extends CI_Model
         $this->db->where('id_ans', $data['id_ans']);
         $this->db->delete('tbl_ans', $data);
     }
+
+    public function get_keyword($keyword){
+		$this->db->select('*');
+		$this->db->from('tbl_ask');
+        $this->db->join('tbl_asprak', 'tbl_asprak.id_asprak = tbl_ask.id_asprak', 'left');
+        $this->db->join('tbl_user', 'tbl_user.id_user = tbl_ask.id_user', 'left');
+        $this->db->join('tbl_kursus', 'tbl_kursus.id_kursus = tbl_ask.id_kursus', 'left');
+		$this->db->like('tanya',$keyword);
+		
+		return $this->db->get()->result();
+	}
 }

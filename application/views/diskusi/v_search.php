@@ -27,7 +27,8 @@
 
 <div class="container">
     <h3 class="text-center mt-4 mb-4">Forum Diskusi</h3>
-    <div class="action-ask">
+    <p class="text-center">Anda mencari <strong>'<?= $keyword ?>'</strong> </p>
+    <div class="action-ask mt-2">
         <div class="right-ask">
             <div class="btn-group mb-2">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
@@ -47,7 +48,7 @@
             <form class="navbar-search" action="<?php echo base_url() ?>diskusi/search" method="post">
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Pertanyaan..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="keyword" value="<?php echo set_value('keyword'); ?>">
+                        aria-label="Search" aria-describedby="basic-addon2" name="keyword" value="">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>

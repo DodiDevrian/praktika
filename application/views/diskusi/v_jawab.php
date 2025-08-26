@@ -36,7 +36,7 @@
     <div class="pertanyaan my-3" style="display: flex; flex-direction: row;">
         <?php if ($detail_ask->foto_tanya != '') { ?>
             <div class="img-tanya-judul mr-3" style="width: 30%;">
-                <img width="100%" src="<?= base_url('upload/foto_tanya/' . $detail_ask->foto_tanya) ?>" alt="">
+                <a href="" ><img width="100%" src="<?= base_url('upload/foto_tanya/' . $detail_ask->foto_tanya) ?>" alt=""></a>
             </div>
         <?php } ?>
 
@@ -233,13 +233,6 @@
                                         Mengandung unsur politik.
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <label>
-                                        <input class="" type="radio" name="report" value="Other" id="otherRadio<?= $value->id_ans ?>">
-                                        Lainnya:
-                                        <input class="form-control" type="text" id="otherInput<?= $value->id_ans ?>" name="report" disabled>
-                                    </label><br><br>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -277,7 +270,7 @@
                     </div>
                     <?php if ($this->session->userdata('id_user')) { ?>
                         <div class="modal-body">
-                            <?php echo form_open_multipart('diskusi/delete_jawab/' . $value->id_ans); ?>
+                            <?php echo form_open_multipart('diskusi/report_delete/' . $value->id_ans); ?>
                             <div class="option-report" style="width: 80%; margin: auto;">
                                 <div class="form-check">
                                     <input class="" type="radio" name="report" id="pilihan1" value="Jawaban tidak sesuai dengan pertanyaan.">
@@ -302,13 +295,6 @@
                                     <label class="" for="exampleRadios4">
                                         Mengandung unsur politik.
                                     </label>
-                                </div>
-                                <div class="form-check">
-                                    <label>
-                                        <input class="" type="radio" name="report" value="Other" id="otherRadio<?= $value->id_ans ?>">
-                                        Lainnya:
-                                        <input class="form-control" type="text" id="otherInput<?= $value->id_ans ?>" name="report" disabled>
-                                    </label><br><br>
                                 </div>
                             </div>
                             <div class="alert alert-danger" role="alert">
@@ -337,6 +323,24 @@
     <?php } ?>
 <?php } ?>
 
+<div class="modal fade" id="viewImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Foto Kendala</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            .<img class="img-ask" src="<?= base_url('upload/foto_tanya/'). $value->foto_tanya ?>" width="100%">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal Like User -->
 <?php foreach ($jawab as $key => $value) { ?>

@@ -47,11 +47,22 @@
             </div>
         </div>
         
-        <?php if ($this->session->userdata('id_user')) { ?>
-            <div class="left-ask">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Buat Pertanyaan</button>
-            </div>
-        <?php } ?>
+        <div class="left-ask d-flex">
+            <form class="navbar-search" action="<?php echo base_url() ?>diskusi/search" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Pertanyaan..."
+                        aria-label="Search" aria-describedby="basic-addon2" name="keyword" value="<?php echo set_value('keyword'); ?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <?php if ($this->session->userdata('id_user')) { ?>
+                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#exampleModal"> Buat Pertanyaan</button>
+            <?php } ?>
+        </div>
     </div>
     
     <?php foreach ($diskusi as $key => $value) { ?>
@@ -132,7 +143,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Buat Pertanyaan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Foto Pertanyaan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
