@@ -11,6 +11,7 @@ class Home extends CI_Controller
         $this->load->model('m_home');
         $this->load->model('m_kursus');
         $this->load->model('m_asprak');
+		$this->load->model('m_praktikan');
 	}
     
     public function index()
